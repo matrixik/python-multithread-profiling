@@ -99,6 +99,7 @@ $ pyflame -x -s 5 -o prof.pyflame.txt -t prog.py arg1 ...
 Create flame graph:
 ```bash
 $ ./flamegraph.pl prof.pyflame.txt > prof.pyflame.svg
+$ pyflame 12345 | flamegraph.pl > myprofile.svg
 
 # Find only specific function
 $ grep cpuid prof.pyflame.txt | ./flamegraph.pl > cpuid.svg
