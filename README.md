@@ -1,7 +1,7 @@
 * [Yappi](#yappi)
 * [pprofile](#pprofile)
 * [pyinstrument](#pyinstrument)
-* [Pyflame](#Pyflame)
+* [Pyflame](#pyflame)
 * [Viewing profiling output files](#viewing-profiling-output-files)
 
 # Yappi
