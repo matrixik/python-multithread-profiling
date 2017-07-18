@@ -53,6 +53,8 @@ Call `init_yappi()` in main or where needed (code [source](https://github.com/pa
 https://github.com/vpelletier/pprofile
 
 ```bash
+$  pip install pprofile
+
 $ pprofile prog.py arg1 ...
 $ pprofile --format callgrind --out profile.out.callgrind prog.py arg1 ...
 $ pprofile --threads 0 prog.py arg1 ...
@@ -63,9 +65,10 @@ $ pprofile --statistic .01 prog.py arg1 ...
 https://github.com/joerick/pyinstrument
 
 ```bash
-pip install pyinstrument
-python -m pyinstrument --html --outfile=profile.out.html prog.py arg1 ...
-pyinstrument --html --outfile=profile.out.html prog.py arg1 ...
+$ pip install pyinstrument
+
+$ python -m pyinstrument --html --outfile=profile.out.html prog.py arg1 ...
+$ pyinstrument --html --outfile=profile.out.html prog.py arg1 ...
 ```
 
 # Pyflame
@@ -97,8 +100,8 @@ $ wget https://raw.githubusercontent.com/brendangregg/FlameGraph/master/flamegra
 
 Run it on already running process:
 ```bash
-# Attach to PID 768 and profile it for 5 seconds
-$ pyflame -s 5 --threads 768
+# Attach to PID 768 and profile it for 5 seconds, sampling every 10 microseconds
+$ pyflame -s 5 -r 0.00001 --threads 768
 $ pyflame -x -s 5 -o prof.pyflame.txt --threads -t prog.py arg1 ...
 ```
 
