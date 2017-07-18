@@ -1,4 +1,4 @@
-[TOC]
+* [Yappi](#yappi)
 
 # Yappi
 https://bitbucket.org/sumerc/yappi/
