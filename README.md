@@ -43,20 +43,6 @@ def init_yappi():
 ```
 Call `init_yappi()` in main or where needed (code [source](https://github.com/pantsbuild/pants/wiki/Debugging-Tips:-multi-threaded-profiling-with-yappi)).
 
-View `pstat` with [**cprofilev**](https://github.com/ymichael/cprofilev)
-```bash
-$ pip install cprofilev
-$ cprofilev -f profile.out.pstat
-
-# You can create this file with cProfile
-$ python -m cProfile -o profile.out.pstat prog.py arg1 ...
-```
-View `callgrind` files with **KCachegrind**
-```bash
-$ sudo apt install KCachegrind
-$ kcachegrind profile.out.callgrind
-```
-
 # pprofile
 https://github.com/vpelletier/pprofile
 
@@ -105,4 +91,20 @@ Run it on already running process:
 ```bash
 # Attach to PID 768 and profile it for 5 seconds, sampling every 0.01 seconds
 $ pyflame -s 5 -r 0.01 768
+```
+
+# Viewing profiling output files:
+
+View `pstat` with [**cprofilev**](https://github.com/ymichael/cprofilev)
+```bash
+$ pip install cprofilev
+$ cprofilev -f profile.out.pstat
+
+# You can create this file with cProfile
+$ python -m cProfile -o profile.out.pstat prog.py arg1 ...
+```
+View `callgrind` files with **KCachegrind**
+```bash
+$ sudo apt install KCachegrind
+$ kcachegrind profile.out.callgrind
 ```
