@@ -80,24 +80,26 @@ $ sudo apt update
 $ sudo apt install pyflame
 ```
 
-Or build on Ubuntu:
+Or build:
 ```bash
-$ sudo apt install autoconf automake autotools-dev g++ pkg-config python-dev python3-dev libtool make
+# On Ubuntu
+$ sudo apt install -y autoconf automake autotools-dev g++ pkg-config python-dev python3-dev libtool make
+# On SLES
+$ sudo zypper install -y autoconf automake gcc-c++ pkg-config python-devel python3-devel libtool make
 $ git clone https://github.com/uber/pyflame.git && cd pyflame
 $ ./autogen.sh && ./configure && make install
-# The `make` command will produce an executable at `src/pyflame` that you can run and use.
 ```
 
 Get [**FlameGraph**](https://github.com/brendangregg/FlameGraph)
 ```bash
-$ wget https://raw.githubusercontent.com/brendangregg/FlameGraph/master/flamegraph.pl
+$ wget https://raw.githubusercontent.com/brendangregg/FlameGraph/master/flamegraph.pl && chmod 764 flamegraph.pl
 ```
 
 Run it on already running process:
 ```bash
-# Attach to PID 768 and profile it for 5 seconds, sampling every 0.01 seconds
-$ pyflame -s 5 -r 0.01 --threads 768
-$ pyflame -x -s 5 -o prof.pyflame.txt -t prog.py arg1 ...
+# Attach to PID 768 and profile it for 5 seconds
+$ pyflame -s 5 --threads 768
+$ pyflame -x -s 5 -o prof.pyflame.txt --threads -t prog.py arg1 ...
 ```
 
 Create flame graph:
