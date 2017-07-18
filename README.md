@@ -109,7 +109,7 @@ $ pyflame 12345 | flamegraph.pl > myprofile.svg
 $ grep cpuid prof.pyflame.txt | ./flamegraph.pl > cpuid.svg
 ```
 
-# Viewing profiling output files:
+# Viewing profiling output files
 
 View `pstat` with [**cprofilev**](https://github.com/ymichael/cprofilev)
 ```bash
