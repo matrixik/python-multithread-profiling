@@ -48,8 +48,8 @@ View `pstat` with [**cprofilev**](https://github.com/ymichael/cprofilev)
 $ pip install cprofilev
 $ cprofilev -f profile.out.pstat
 
-// You can create this file with cProfile
-$ python -m cProfile -o profile.out.pstat some_python_executable arg1 ...
+# You can create this file with cProfile
+$ python -m cProfile -o profile.out.pstat prog.py arg1 ...
 ```
 View `callgrind` files with **KCachegrind**
 ```bash
@@ -61,7 +61,48 @@ $ kcachegrind profile.out.callgrind
 https://github.com/vpelletier/pprofile
 
 ```bash
-$ pprofile --format callgrind --out profile.out.callgrind some_python_executable arg1 ...
-$ pprofile some_python_executable arg1 ...
+$ pprofile prog.py arg1 ...
+$ pprofile --format callgrind --out profile.out.callgrind prog.py arg1 ...
+$ pprofile --threads 0 prog.py arg1 ...
+$ pprofile --statistic .01 prog.py arg1 ...
 ```
 
+# pyinstrument
+https://github.com/joerick/pyinstrument
+
+```bash
+pip install pyinstrument
+python -m pyinstrument --html --outfile=profile.out.html prog.py arg1 ...
+pyinstrument --html --outfile=profile.out.html prog.py arg1 ...
+```
+
+# Pyflame
+https://github.com/uber/pyflame
+
+It profile an already running process.
+
+Install on Ubuntu:
+```bash
+$ sudo apt-add-repository ppa:trevorjay/pyflame
+$ sudo apt update
+$ sudo apt install pyflame
+```
+
+Or build on Ubuntu:
+```bash
+$ sudo apt install autoconf automake autotools-dev g++ pkg-config python-dev python3-dev libtool make
+$ git clone https://github.com/uber/pyflame.git && cd pyflame
+$ ./autogen.sh && ./configure && make install
+# The `make` command will produce an executable at `src/pyflame` that you can run and use.
+```
+
+Get [**FlameGraph**](https://github.com/brendangregg/FlameGraph)
+```bash
+$ wget https://raw.githubusercontent.com/brendangregg/FlameGraph/master/flamegraph.pl
+```
+
+Run it on already running process:
+```bash
+# Attach to PID 768 and profile it for 5 seconds, sampling every 0.01 seconds
+$ pyflame -s 5 -r 0.01 768
+```
