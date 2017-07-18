@@ -124,7 +124,7 @@ $ cprofilev -f profile.out.pstat
 # You can create this file with cProfile
 $ python -m cProfile -o profile.out.pstat prog.py arg1 ...
 ```
-View `callgrind` files with **KCachegrind**
+View `callgrind` files with [**KCachegrind**](https://kcachegrind.github.io/html/Home.html)
 ```bash
 $ sudo apt install KCachegrind
 $ kcachegrind profile.out.callgrind
